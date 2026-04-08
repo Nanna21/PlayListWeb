@@ -1,188 +1,139 @@
 <!DOCTYPE html>
-
 <html lang="ko">
-
 <head>
+<meta charset="UTF-8">
+<title>버킷리스트 카드</title>
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>플레이 리스트 소개</title>
-
-    
-
-    <style>
-
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            /* 테두리 두께를 크기에 포함시키는 마법의 속성 (나중에 배웁니다!) */
-
-            box-sizing: border-box; 
-
-        }
-
-
-
-        body {
-          text-align: center;
-          background: linear-gradient(135deg, #0b0f2a, #1a1f4d);
-          color: #e5e7eb; 
-          font-family: 'Arial';
+<style>
+body {
+    background: #0b0d12;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.lyrics-box {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 15px;
-  backdrop-filter: blur(10px); 
-  box-shadow: 0 0 20px rgba(240, 230, 140, 0.2);
+/* 카드 */
+.card {
+    width: 320px;
+    margin: 80px auto;
+    background: linear-gradient(160deg, #141821, #0e1016);
+    padding: 15px 15px 30px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
 }
 
-.highlight {
-  color: #F0E68C; 
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(240, 230, 140, 0.8); 
+/* hover 효과 (네온 강조) */
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 20px rgba(255,70,85,0.6),
+                0 0 40px rgba(255,70,85,0.3);
 }
 
-#track-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+/* 🔥 배경 텍스트 */
+.card::after {
+    content: "VALORANT";
+    position: absolute;
+    bottom: 10px;
+    right: -20px;
+    font-size: 60px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    transform: rotate(-15deg);
+    pointer-events: none;
 }
 
-th, td {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding: 10px;
-  text-align: center;
+/* 이미지 */
+.img-wrap {
+    position: relative;
 }
 
-#track-table tr:nth-child(even) {
-  background: rgba(255,255,255,0.03);
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.listen-btn {
-  background: transparent;
-  color: #F0E68C;
-  border: 1px solid #F0E68C;
-  border-radius: 50px;
-  padding: 10px 18px;
-  cursor: pointer;
-  transition: 0.3s;
+/* 이미지 위 빨간 오버레이 */
+.img-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(255,70,85,0.35),
+        transparent 60%
+    );
+    border-radius: 10px;
 }
 
-.listen-btn:hover {
-  background: #F0E68C;
-  color: #0b0f2a;
-  box-shadow: 0 0 15px rgba(240, 230, 140, 0.8);
+/* 🔥 제목 (선명한 글리치 느낌 - 깨짐 없음) */
+.title {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 15px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    text-shadow:
+        1px 0 #ff4655,
+        -1px 0 #00f0ff,
+        0 0 6px rgba(255,70,85,0.5);
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* 내용 */
+.card p {
+    color: #cfd3dc;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* 배지 */
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4655;
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(255,70,85,0.8);
+}
+
+/* 🔥 노이즈 텍스처 */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+    opacity: 0.05;
+    pointer-events: none;
 }
 
 </style>
-
 </head>
 
 <body>
 
-    <header id="album-header">
+<div class="card">
+    <span class="badge">VALORANT</span>
 
-        <p class="Playlist_Creater">Nagyeong`s</p>
+    <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&auto=format&fit=crop&q=60">
+    </div>
 
-        <h1 style="color: rgb(240, 230, 140);"> Playlist</h1>
+    <div class="title">🎯 나의 게임 목표</div>
 
-        <p style="color: rgba(240, 230, 140, 0.8);" class="subtitle">몽환적인 우주가 떠오르는 플레이리스트</p>
-    </header>
+    <p>🏆 발로란트 대회 나가기</p>
+    <p>🎮 발로란트 대회 직관하기</p>
 
-    <section class="lyrics-section">
+</div>
 
-      <p style="margin-bottom: 20px;"></p>  
-      <h2>🎵 Ghost Avenue 하이라이트 파트 가사</h2>
-
-        <div class="lyrics-box">
-
-            <p>추억은 울고있었어</p>
-
-            <p class="highlight">내일은 잊어버리고 싶다며</p>
-
-            <p>생각하고 바라고 기도했어</p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="info-section">
-      <p style="margin-bottom: 20px;"></p> 
-        <h2>✨ Ghost Avenue 감상 포인트</h2>
-        <ul id="charm-list">
-            <li>리듬을 강조시키는 베이스의 무거움</li>
-
-            <li>주인공의 서사를 풀어나가는 뮤비 형식</li>
-
-            <li>가벼우면서도 후반부에 진입할 수록 무거워지는 보컬</li>
-
-        </ul>
-
-    </section>
-
-
-
-    <section class="track-section">
-      <p style="margin-bottom: 20px;"></p>   
-        <h2>🎧 추천 플레이리스트</h2>
-        <table id="track-table">
-            <thead>
-                <tr>
-                    <th>Track</th>
-                    <th>곡명</th>
-                    <th>Play Time</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>compass | Mili</td>
-                    <td>2:48</td>
-                </tr>
-
-                <tr>
-
-                    <td>02</td>
-                    <td>Mikrokosmos | BTS</td>
-                    <td>3:45</td>
-                </tr>
-
-                <tr>
-                    <td>03</td>
-                    <td>Ghost Avenue | EVE</td>
-                    <td>3:17</td>
-                </tr>
-
-                <tr>
-                    <td>04</td>
-                    <td>Maestro | 창모</td>
-                    <td>3:45</td>
-                </tr>
-
-                <tr>
-                    <td>05</td>
-                    <td>Counting Stars | OneRepublic</td>
-                    <td>4:17</td>
-                </tr>
-    
-            </tbody>
-        </table>
-    </section>
-
-    <footer id="album-footer">
-        <button class="listen-btn">전곡 감상하러 가기</button>
-    </footer>
 </body>
-
 </html>
