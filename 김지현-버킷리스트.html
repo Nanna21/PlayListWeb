@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>버킷리스트 카드</title>
+
+<style>
+body {
+    background: #0b0d12;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* 카드 */
+.card {
+    width: 320px;
+    margin: 80px auto;
+    background: linear-gradient(160deg, #141821, #0e1016);
+    padding: 15px 15px 30px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+/* hover 효과 */
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 20px rgba(255,70,85,0.6),
+                0 0 40px rgba(255,70,85,0.3);
+}
+
+/* 배경 텍스트 */
+.card::after {
+    content: "VALORANT";
+    position: absolute;
+    bottom: 10px;
+    right: -20px;
+    font-size: 60px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+/* 이미지 */
+.img-wrap {
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 이미지 위 빨간 오버레이 */
+.img-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(255,70,85,0.35),
+        transparent 60%
+    );
+    border-radius: 10px;
+}
+
+/* 제목 */
+.title {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 15px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    text-shadow:
+        1px 0 #ff4655,
+        -1px 0 #00f0ff,
+        0 0 6px rgba(255,70,85,0.5);
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* 내용 */
+.card p {
+    color: #cfd3dc;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* 배지 */
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4655;
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(255,70,85,0.8);
+}
+
+/* 노이즈 텍스처 */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <span class="badge">VALORANT</span>
+
+    <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&auto=format&fit=crop&q=60">
+    </div>
+
+    <div class="title">🎯 나의 게임 목표</div>
+
+    <p>🏆 발로란트 대회 나가기</p>
+    <p>🎮 발로란트 대회 직관하기</p>
+
+</div>
+
+</body>
+</html>
